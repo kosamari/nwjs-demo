@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>pixel scale</title>
+    <script type="text/javascript" src="d3.min.js"></script>
+    <style type="text/css">
+    path.overlay {
+      fill: orange;
+    }
+    path.base{
+      fill: #f3f3f3;
+    }
+    body{
+      background-color:rgba(6, 168, 162, 0.3);
+      -webkit-app-region: drag;
+      width:100%;
+      height: 100%;
+      font-family: sans-serif;
+      color:#999;
+      text-shadow: 1px 1px #666;
+      font-size:20px;
+      text-align: center;
+      padding-top: 20%;
+      padding-bottom: 20%;
+    };
+    </style>
+  </head>
+  <body>
+    <div>
+      Width: <span id='width'></span> pixel<br>
+      Height: <span id='height'></span> pixel<br>
+      <br>
+      x:<span id='x'></span>
+      y:<span id='y'></span>
+    </div>
+    <script type="text/javascript">
+    var gui = require('nw.gui');
+    var win = gui.Window.get();
+
+    function setLocation(){
+      document.getElementById('x').innerHTML = win.x;
+      document.getElementById('y').innerHTML = win.y;
+    }
+
+    function setSize(){
+      document.getElementById('width').innerHTML = win.width;
+      document.getElementById('height').innerHTML = win.height;
+    }
+
+    win.on('move', function() {
+      setLocation();
+    });
+
+    win.on('resize', function() {
+      setSize();
+    });
+
+    setSize();
+    setLocation();
+
+    var menubar = new gui.Menu({ type: 'menubar' });
+    var mainMenu = new gui.Menu();
+
+      mainMenu.append(new gui.MenuItem({
+        label: 'version',
+        click: function(){
+            alert('Version : 0.0.1');
+        }
+      }));
+
+      menubar.append(new gui.MenuItem({
+        label: 'MainMenu',
+        submenu: mainMenu
+      }));
+
+
+      var slideMenu = new gui.Menu();
+
+      menubar.append(new gui.MenuItem({
+        label: 'Control',
+        submenu: slideMenu
+      }));
+
+      slideMenu.append(new gui.MenuItem({
+        label: 'Debug',
+        click: function (){
+          win.showDevTools();
+        } 
+      }));
+
+      slideMenu.append(new gui.MenuItem({
+        label: 'Reload',
+        click: function (){
+          win.reload();
+        }
+      }));
+
+      win.menu = menubar;
+
+    </script>
+  </body>
+</html>

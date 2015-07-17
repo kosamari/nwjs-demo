@@ -1,0 +1,17 @@
+{
+  "name": "countdown",
+  "version": "0.0.1",
+  "main": "index.html",
+  "scripts": {
+    "start": "nw"
+  },
+  "window": {
+    "width":350,
+    "height":300,
+    "frame":true,
+    "toolbar": false
+  },
+  "dependencies": {
+    "nw": "^0.12.2"
+  }
+}

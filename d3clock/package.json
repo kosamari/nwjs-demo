@@ -1,0 +1,19 @@
+{
+  "name": "d3-clock",
+  "version": "0.0.1",
+  "main": "index.html",
+  "scripts": {
+    "start": "nw"
+  },
+  "window": {
+    "width":300,
+    "height":100,
+    "transparent": true,
+    "frame":false,
+    "toolbar": false,
+    "always-on-top": true
+  },
+  "dependencies": {
+    "nw": "^0.12.2"
+  }
+}
